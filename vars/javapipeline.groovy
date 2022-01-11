@@ -1,4 +1,5 @@
 def call(Map pipelineParams) {
+personName1 = pipelineParams.getOrDefault('personName', null)
 pipeline {
     agent any
 
@@ -12,7 +13,8 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/awsdevopsaravind/ci.git'
-                echo 'github repo cloned'
+                echo 'github repo cloned' + personName1
+		
             } 
         }
         stage('Build') {
